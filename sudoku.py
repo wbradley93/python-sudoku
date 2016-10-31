@@ -1,16 +1,17 @@
 """
 Python Sudoku
 Author: Wes Bradley
-Last Modified: 30 October 2016
+Last Modified: 31 October 2016
 
 Generates standard sudoku boards according to method outlined in generator.pdf
 """
 from random import randrange
+from backtrack import solve
 from time import sleep
 
 def randomVal():
     return randrange(1, 10)
-    
+
 def randomPlace():
     return (randrange(9) for _ in range(2))
 
@@ -28,7 +29,7 @@ def generateBoard():
             if validMove(board, row, col, val):
                 break
         board[row][col] = val
-        
+
     solve(board, 0)
     print(digHoles(board))
     return board
@@ -43,25 +44,6 @@ def printBoard(b):
         print(line)
         print(hLine)
 
-def solve(b, n):
-    r = n//9
-    c = n%9
-    
-    if n == 81:
-        return True
-    elif b[r][c] > 0:
-        return solve(b, n+1)
-    else:
-        v = 0
-        while True:
-            v += 1
-            if v == 10:
-                b[r][c] = 0
-                return False
-            elif validMove(b, r, c, v):
-                b[r][c] = v
-                if solve(b, n+1):
-                    return True
 
 def digHoles(b):
     pBoard = [[True for _ in range(9)] for _ in range(9)]
@@ -69,7 +51,7 @@ def digHoles(b):
     n = pRange.pop(randrange(len(pRange)))
     r = n//9
     c = n%9
-    
+
     return pBoard, pRange, n, r, c
 
 def sudoku():
