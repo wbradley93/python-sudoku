@@ -9,7 +9,7 @@ Defines sudoku board class and related methods
 from generate import generateBoard
 from copy import deepcopy
 
-class Board:
+class Board(object):
     def __init__(self, diff):
         self.diff = diff
         self.solution, self.initialBoard = generateBoard(self.diff)
@@ -18,17 +18,25 @@ class Board:
     def getDiff(self):
         return self.diff
         
-    def getSolution(self):
-        return self.__str__(self.solution)
+    def getInitialBoard(self):
+        return self.initialBoard
         
-    def __str__(self, b = None):
-        if b is None: b = self.board
+    def getBoard(self):
+        return self.board
+        
+    def getSolution(self):
+        return self.solution
+        
+    def resetBoard(self):
+        self.board = deepcopy(self.initialBoard)
+        
+    def __str__(self):
         hLine = "-" * 37 + "\n"
         out = hLine 
         for i in range(9):
             line = "|"
             for j in range(9):
-                line += " " + str(b[i][j]) + " |"
+                line += " " + (" " if self.board[i][j] is 0 else str(self.board[i][j])) + " |"
             out += line + "\n"
             out += hLine
         return out
