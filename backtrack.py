@@ -10,6 +10,10 @@ board. To solve entire board, execute solve(b,0). Returns True if solution exist
 otherwise returns False.
 """
 
+def validMove(b, r, c, v):
+    return not (v in b[r] or v in (i[c] for i in b) or \
+        any(v in k for k in [j[3 * (c//3):3 * (c//3) + 3] for j in b[3 * (r//3):3 * (r//3) + 3]]))
+
 def solve(b, n):
     # get the current position on board
     r = n//9
