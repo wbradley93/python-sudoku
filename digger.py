@@ -3,8 +3,9 @@ Sudoku Hole Digger
 Author: Wes Bradley
 Last Modified: 31 October 2016
 
-Takes a solved sudoku board and 'digs out' a number of spaces according to the 
-chosen difficulty level.
+Takes a solved sudoku board and 'digs out' a number of spaces by a method
+corresponding to the chosen difficulty level.
+TODO: implement digging methods for higher difficulties
 """
 
 from backtrack import validMove, solve
