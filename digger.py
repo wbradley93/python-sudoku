@@ -1,14 +1,15 @@
 """
 Sudoku Hole Digger
 Author: Wes Bradley
-Last Modified: 31 October 2016
+Last Modified: 3 December 2016
 
 Takes a solved sudoku board and 'digs out' a number of spaces by a method
 corresponding to the chosen difficulty level.
 TODO: implement digging methods for higher difficulties
 """
 
-from backtrack import validMove, solve
+from backtrack import solve
+from helpers import validMove
 from random import randrange
 from copy import deepcopy
 from difficulty import givenRange, rowColBound
@@ -36,3 +37,4 @@ def digHoles(b, dif):
                     and isUnique(b, row, col):
                 b[row][col] = 0
                 givens -= 1
+    return b
