@@ -1,13 +1,12 @@
 """
 Python Sudoku
 Author: Wes Bradley
-Last Modified: 3 December 2016
+Last Modified: 5 December 2016
 
 Terminal implementation of sudoku game.
 Usage: sudoku()
 
-TODO: color 3x3 blocks in board, clear and reprint terminal
-        with each turn (curses), implement cursor, implement correctness check,
+TODO: curses: color 3x3 blocks in board, implement cursor, implement correctness check,
         implement animated solver, implement game timer and leaderboard
 maybe TODO: save logs of games, allow boards to be loaded and replayed, or 
         previous games to be watched
@@ -65,10 +64,10 @@ def sudoku():
         mSelect = input("Make your selection: ")
     
         if mSelect == 'new':
-            dif = input("Choose a difficulty level from 0 (extremely easy) to 4 (evil): ")
-            while not dif.isnumeric() or int(dif) not in range(5):
+            dif = input("Choose a difficulty level from 1 (extremely easy) to 5 (evil): ")
+            while not dif.isnumeric() or int(dif) not in range(1,6):
                 dif = input("That was not a valid difficulty level. Try again: ")
-            board = Board(int(dif))
+            board = Board(int(dif)-1)
             startGame(board)
         elif mSelect == 'continue':
             if 'board' in locals():

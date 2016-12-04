@@ -1,6 +1,6 @@
 # Python Sudoku
 
-    Status: undergoing bottom-to-top rebuild.
+    Status: basic functionality complete; save/load and curses cli to be implemented
 
 Main game function `sudoku()` in `sudoku.py`.
 

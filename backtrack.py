@@ -11,7 +11,7 @@ otherwise returns False.
 """
 from helpers import validMove
 
-def solve(b, n):
+def solve(b, n = 0):
     # get the current position on board
     r = n//9
     c = n%9
